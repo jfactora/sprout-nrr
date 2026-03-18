@@ -27,9 +27,13 @@ from datetime import date, datetime
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 BASE      = os.path.dirname(os.path.abspath(__file__))
+# NRR_OUTPUT_DIR: set this env var to write nrr_summary_v2.json elsewhere
+# e.g. export NRR_OUTPUT_DIR=/path/to/sprout-nrr/data
+OUT_DIR   = os.environ.get('NRR_OUTPUT_DIR', BASE)
+os.makedirs(OUT_DIR, exist_ok=True)
 RAW_F     = os.path.join(BASE, 'nrr_raw_invoices.json')
 ALLOC_F   = os.path.join(BASE, 'nrr_allocated_lines.json')
-SUMM_F    = os.path.join(BASE, 'nrr_summary_v2.json')
+SUMM_F    = os.path.join(OUT_DIR, 'nrr_summary_v2.json')
 HS_F         = os.path.join(BASE, 'hs_companies.json')   # HubSpot company export (hs_build.py)
 NS_HS_ID_MAP_F = os.path.join(BASE, 'ns_hs_id_map.json') # NS customer_id → HubSpot record ID
 HS_JOIN_F    = os.path.join(BASE, 'hs_join_map.json')   # output: per-customer join results
