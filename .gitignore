@@ -1,0 +1,25 @@
+# Environment / secrets
+.env
+*.env
+
+# Generated data files (large, may contain sensitive business data)
+*.json
+*.csv
+*.html
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# Screenshots
+*.png
+*.jpg
