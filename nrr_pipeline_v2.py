@@ -146,8 +146,6 @@ def build_allocations(raw: list):
 
     for row in raw:
         cls = (row.get('classification') or '').strip()
-        if cls == 'one_time':
-            continue
 
         amount = float(row.get('amount') or 0)
         rt     = 't' if cls == 'true_up' else 'r'
@@ -208,7 +206,7 @@ def build_allocations(raw: list):
                     'csm_name':                csm,
                     'invoice_number':          _s(row['invoice_number']),
                     'invoice_date':            _s(row['invoice_date']),
-                    'description':             _s(row['description']),
+                    'description':             _s(row.get('description', '')),
                     'module':                  module,
                     'classification':          cls,
                     'rt':                      rt,
